@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node * next;
+		
+	Node()
+	{
+		next = nullptr;
+		
+	}
+};
+
+class LinkedList
+{
+	private:
+		Node * head;
+		
+	public:
+		LinkedList()
+		{
+			head = nullptr;
+		}
+	
+	int length()
+	{
+		int size = 0;
+		Node * current = head;
+		while(current){
+			++size;
+			current = current -> next;
+		}
+		return size;
+	}
+	void insertAtIndex(int index, int data)
+	{
+		int size = length();
+		cout<<"Size "<<size<<endl;
+		Node * newNode = new Node();
+		newNode -> data = data;
+		newNode -> next = nullptr;
+		Node * current = head;
+		if(index < 1 or index > size){
+			cout<<"Incorrect Index";
+			return;
+		}
+		if(index == 1){
+			newNode -> next = head;
+			head = newNode;
+			cout<<"Inserted"<<endl;
+			return;
+		}
+		int cursor = 1;
+		if(index == size){
+			while(current -> next)
+				current = current -> next;
+			current -> next = newNode;
+			cout<<"Inserted"<<endl;
+			return;
+		}
+		while(cursor < index - 1){
+			++cursor;
+			current = current -> next;
+		}
+		newNode -> next = current -> next;
+		current -> next = newNode;
+		cout<<"Inserted"<<endl;
+		return;
+	}
+};
