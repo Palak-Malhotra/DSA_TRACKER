@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node * next;
+		
+	Node()
+	{
+		next = nullptr;
+		
+	}
+};
+
+class LinkedList
+{
+	private:
+		Node * head;
+		
+	public:
+		LinkedList()
+		{
+			head = nullptr;
+		}
+    
+	void removeLast()
+	{
+		Node * current = head;
+		if(head == nullptr)
+		{
+			cout<<"Empty"<<endl;
+			return;
+		}
+		if(current -> next == nullptr)
+		{
+			head = nullptr;
+			cout<<"Removed"<<endl;
+			return;
+		}
+		while(current -> next -> next)
+			current = current -> next;
+		current-> next = nullptr;
+		cout<<"Removed"<<endl;
+		return;
+	}
+};
