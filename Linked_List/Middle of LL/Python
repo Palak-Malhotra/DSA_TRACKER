@@ -1,0 +1,25 @@
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def length(self):
+        size = 0
+        current = self.head
+        while current:
+            size += 1
+            current = current.next
+        return size
+    
+    def middle_element(self):
+        slow, fast = self.head, self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        if self.length() % 2 == 0:
+            return slow.next.val
+        return slow.val
