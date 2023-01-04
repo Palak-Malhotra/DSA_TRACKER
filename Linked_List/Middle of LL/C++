@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node * next;
+		
+	Node()
+	{
+		next = nullptr;
+		
+	}
+};
+
+class LinkedList
+{
+	private:
+		Node * head;
+		
+	public:
+		LinkedList()
+		{
+			head = nullptr;
+		}
+    
+	int middleElement(){
+		Node * slow = head;
+		Node * fast = head;
+		while(fast and fast -> next){
+			slow = slow -> next;
+			fast = fast -> next -> next;
+		}
+		return slow -> data;
+	}
+};
