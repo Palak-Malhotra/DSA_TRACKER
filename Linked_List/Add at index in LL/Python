@@ -1,0 +1,50 @@
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def length(self):
+        size = 0
+        current = self.head
+        while current:
+            size += 1
+            current = current.next
+        return size
+    
+    def insert_at_head(self, val):
+        newNode = Node(val)
+        newNode.next = self.head
+        self.head = newNode
+        return "Success"
+    
+    def insert_at_index(self, index, val):
+        new_node = Node(val)
+        current = self.head
+        if index < 0:
+            return "Incorrect Index"
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return "Inserted"
+        if index == self.length():
+            while current.next:
+                current = current.next
+            current.next = new_node
+            new_node.next = None
+            return "Inserted"
+        cursor = 0
+        while cursor < index - 1:
+            current = current.next
+            cursor += 1
+        new_node.next = current.next
+        current.next = new_node
+        return "Inserted"
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.val, end = "->")
+            current = current.next
