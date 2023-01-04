@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node * next;
+		
+	Node()
+	{
+		next = nullptr;
+		
+	}
+};
+
+class LinkedList
+{
+	private:
+		Node * head;
+		
+	public:
+		LinkedList()
+		{
+			head = nullptr;
+		}
+    
+	void reverseList()
+	{
+		Node * prev = nullptr;
+		Node * nextToCurrent = nullptr;
+		Node * current = head;
+		while(current){
+			nextToCurrent = current -> next;
+			current -> next = prev;
+			prev = current;
+			current = nextToCurrent;
+		}
+		head = prev;
+	}
+};
