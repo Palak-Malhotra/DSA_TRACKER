@@ -1,0 +1,23 @@
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+    def is_palindrome(self):
+        stack = []
+        current = self.head
+        while current:
+            stack.append(current.val)
+            current = current.next
+        current = self.head
+        while current:
+            popped = stack.pop()
+            if current.val != popped:
+                return False
+            else:
+                current = current.next
+        return True
