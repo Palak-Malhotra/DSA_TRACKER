@@ -1,0 +1,31 @@
+def reverse_list(head):
+    next_, prev = None, None
+    current = head
+    while current:
+        next_ = current.next
+        current.next = prev
+        prev = current
+        current = next_
+    return prev
+class Solution:
+    #Function to add two numbers represented by linked list.
+    def addTwoLists(self, first, second):
+        # code here
+        # return head of sum list
+        result = Node(-1)
+        temp = result
+        first = reverse_list(first)
+        second = reverse_list(second)
+        carry = 0
+        while first or second or carry:
+            if first:
+                carry += first.data
+                first = first.next
+            if second:
+                carry += second.data
+                second = second.next
+            value = carry % 10
+            carry //= 10
+            temp.next = Node(value)
+            temp = temp.next
+        return reverse_list(result.next)
