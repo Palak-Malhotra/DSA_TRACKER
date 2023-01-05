@@ -1,0 +1,59 @@
+Node * findMid(Node * head){
+    Node * slow = head;
+    Node * fast = head -> next;
+    while(fast and fast -> next){
+        slow = slow -> next;
+        fast = fast -> next -> next;
+    }
+    
+    return slow;
+}
+Node * merge(Node * left, Node * right){
+    if(left == nullptr)
+        return right;
+    if(right == nullptr)
+        return left;
+    Node * result = new Node(-1);
+    Node * temp = result;
+    while(left and right){
+        if(left -> data < right -> data){
+            temp -> next = left;
+            temp = left;
+            left = left -> next;
+        }
+        else{
+            temp -> next = right;
+            temp = right;
+            right = right -> next;
+        }
+    }
+    while(left){
+        temp -> next = left;
+        temp = left;
+        left = left -> next;
+    }
+    while(right){
+        temp -> next = right;
+        temp = right;
+        right = right -> next;
+    }
+    return result -> next;
+}
+class Solution{
+  public:
+    //Function to sort the given linked list using Merge Sort.
+    Node* mergeSort(Node* head) {
+        // your code here
+        if(head == nullptr or head -> next == nullptr)
+            return head;
+        Node * mid = findMid(head);
+        Node * left = head;
+        Node * right = mid -> next;
+        mid -> next = nullptr;
+        left = mergeSort(left);
+        right = mergeSort(right);
+        Node * result = merge(left, right);
+        return result;
+        
+    }
+};
