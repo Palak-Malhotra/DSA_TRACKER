@@ -1,0 +1,46 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+class Node
+{
+	public:
+		int data;
+		Node * next;
+		
+	Node()
+	{
+		next = nullptr;
+		
+	}
+};
+
+class LinkedList
+{
+	private:
+		Node * head;
+		
+	public:
+		LinkedList()
+		{
+			head = nullptr;
+		}
+	
+	bool isPalindrome(){
+		Node * current = head;
+		stack <int> st;
+		while(current){
+			st.push(current -> data);
+			current = current -> next;
+		}
+		current = head;
+		while(current){
+			int popped = st.top();
+			st.pop();
+			if(current -> data != popped)
+				return false;
+			current = current -> next;
+		}
+		return true;
+	}
+};
