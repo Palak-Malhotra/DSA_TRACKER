@@ -1,0 +1,15 @@
+ListNode* oddEvenList(ListNode* head) {
+        if(head == nullptr or head -> next == nullptr)
+            return head;
+        ListNode * oddHead = head;
+        ListNode * evenHead = head -> next;
+        ListNode * cursor = evenHead;
+        while(oddHead -> next and evenHead -> next){
+            oddHead -> next = oddHead -> next -> next;
+            evenHead -> next = evenHead -> next -> next;
+            oddHead = oddHead -> next;
+            evenHead = evenHead -> next;
+        }
+        oddHead -> next = cursor;
+        return head;
+    }
