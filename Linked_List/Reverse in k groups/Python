@@ -1,0 +1,17 @@
+def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        current = head
+        for i in range(k):
+            if current is None:
+                return head
+            current = current.next
+        current = head
+        prev, next = None, None
+        count = 0
+        while current and count < k:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+            count += 1
+        head.next = self.reverseKGroup(current, k)
+        return prev
