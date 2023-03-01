@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void printDecreasingIncreasing(int n)
+{
+	if(n == 0)
+		return;
+	cout<<n<<endl;
+	printDecreasingIncreasing(n - 1);
+	cout<<n<<endl;	
+}
+int main()
+{
+	int n;
+	cin>>n;
+	printDecreasingIncreasing(n);
+	return 0;
+}
