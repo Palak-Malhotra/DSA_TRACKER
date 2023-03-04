@@ -1,0 +1,6 @@
+int maximumArr(int arr[], int n, int maximum = -1)
+{
+	if(n == 0)
+		return maximum;
+	return maximumArr(arr, n - 1, max(maximum, arr[n - 1]));
+}
