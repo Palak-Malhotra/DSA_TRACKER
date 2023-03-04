@@ -1,0 +1,5 @@
+def display_reverse(arr):
+    if len(arr) == 0:
+        return 
+    display_reverse(arr[1:])
+    print(arr[0])
