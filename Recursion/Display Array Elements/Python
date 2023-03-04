@@ -1,0 +1,5 @@
+def display_array(arr):
+    if len(arr) == 0:
+        return 
+    print(arr[0])
+    display_array(arr[1:])
