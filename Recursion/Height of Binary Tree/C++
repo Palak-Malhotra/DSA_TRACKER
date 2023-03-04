@@ -1,0 +1,21 @@
+class Node
+{
+	public:
+		int data;
+		Node * leftChild;
+		Node * rightChild;
+	Node(int val)
+	{
+		data = val;
+		leftChild = nullptr;
+		rightChild = nullptr;
+	}
+};
+int height(Node * root)
+{
+	if(root == nullptr)
+		return 0;
+	int left = height(root -> leftChild);
+	int right = height(root -> rightChild);
+	return (max(left, right) + 1);
+}
